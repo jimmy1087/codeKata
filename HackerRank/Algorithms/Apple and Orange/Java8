@@ -1,0 +1,10 @@
+// Better solution
+// https://www.hackerrank.com/challenges/apple-and-orange/forum/comments/235712
+
+Arrays.stream(apple)
+    .filter(x -> x + a  >= s && x + a <= t)
+    .count();
+
+Arrays.stream(orange)
+    .filter(x -> x + b  >= s && x + b <= t)
+    .count();
