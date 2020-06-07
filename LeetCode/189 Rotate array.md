@@ -8,9 +8,11 @@ Space complexity: O(n)
 ---
 
 Given an array, rotate the array to the right by k steps, where k is non-negative.
+
 'a[1,2,3,4,5,6]
 
 'a[(i+k)%n] 
+
 will traverse the array starting from a given K and
 restart index to zero when len of array is reached (MOD %)
 
