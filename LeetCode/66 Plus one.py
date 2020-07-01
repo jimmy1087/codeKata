@@ -4,7 +4,7 @@ class Solution:
     # Runtime: 32 ms
     # Memory Usage: 13.8 MB
     # Time complexity : O(N)
-    # Space complexity : O(1)
+    # Space complexity : O(1) when digits contains at least one not-nine digit, and O(N) otherwise.
     def plusOne_A(self, digits: List[int]) -> List[int]:
         carryOn = False
         firstLoop = True
@@ -27,7 +27,7 @@ class Solution:
     # Runtime: 36 ms
     # Memory Usage: 13.8 MB
     # Time complexity : O(N)
-    # Space complexity : O(1)
+    # Space complexity : O(1) when digits contains at least one not-nine digit, and O(N) otherwise.
     def plusOne_B(self, digits: List[int]) -> List[int]:
         n = len(digits)
         
