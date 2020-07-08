@@ -9,7 +9,7 @@ Solutions 2 problems from different platforms. (Leetcode, Codeforces, etc.)
 |C.C.T.I. [^1]|  1  |     |    |  1  |
 |HackerRank   |  5  |     |    |  5  |
 |LeetCode     |  5  |     |    |  5  |
-|Pluralsight  |  1  |     |    |  1  |
-|Total        | 12  |  1  |    | 13  |
+|Pluralsight  |  2  |     |    |  2  |
+|Total        | 13  |  1  |    | 14  |
 
 [^1]: C.C.T.I. Cracking the code interview
