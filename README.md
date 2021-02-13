@@ -1,16 +1,15 @@
 # Code Katas
 My deliberate practice journey
 ---
-Platforms
+Problems source:
 
-ACM, Cracking the code Interview, HackerRank, LeetCode, Pluralsight, AlgoExpert
-
-Difficulties
-
-|             |Easy|Medium|Hard|Total|
-|-------------|-----|-----|----|-----|
-|Total        | 15  |  7  |    | 22  |
-
+AlgoExpert
+Codesignal
+Leetcode
+HackerRank
+ACM
+Pluralsight
+Cracking the code Interview
 
 
 
