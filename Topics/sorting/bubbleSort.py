@@ -1,3 +1,5 @@
+# Easy
+
 def bubbleSort(array):
     sorted = False
     counter = 0
