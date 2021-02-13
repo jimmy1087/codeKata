@@ -6,7 +6,7 @@ My deliberate practice journey
 |-------------|-----|-----|----|-----|
 |By topic     |  2  |  6  |    |  8  |  
 |ACM          |     |  1  |    |  1  |
-|C.C.T.I. [^1]|  1  |     |    |  1  |
+|C.T.C.I. [^1]|  1  |     |    |  1  |
 |HackerRank   |  5  |     |    |  5  |
 |LeetCode     |  5  |     |    |  5  |
 |Pluralsight  |  2  |     |    |  2  |
