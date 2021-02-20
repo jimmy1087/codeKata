@@ -18,10 +18,10 @@ Output:
 
 [4, 8, 6, 6, 2]
 
-queue = [10, 2, 6]
-level_size = 3
+queue = [6]
+level_size = 1
 level = 2
-data = { 0: (4,1), 1: (16,2), 2: (18,3), 3: (6,1), 4: (2,1)}
+data = { 0: (4, 1), 1: (16, 2), 2: (18, 3), }
 
 result = [4, 8, 6, 6, 2]
 '''
@@ -32,60 +32,50 @@ class Node:
         self.left = None
         self.right = None
 
-def collectDataPerLevel(node, data, level = 0):
+def collectDataInBFS(node, data, level = 0):
     queue = [node]
-    while len(queue):
-        level_size = len(queue)
-        while (level_size):
-            level_size -= 1
-            currentNode = queue.pop(0)
-            
+    while queue:
+        itemsPerLevel = len(queue)
+        while itemsPerLevel:  
+            itemsPerLevel -= 1
+            node = queue.pop(0)
+
             if level not in data:
-                data[level] = (currentNode.value, 1)
+                data[level] = (node.value, 1)
             else:
-                sumVal, count = data[level]
-                sumVal += currentNode.value
-                count  += 1
-                data[level] = (sumVal, count)
-
-            if currentNode.left is not None:
-                queue.append(currentNode.left)
-            if currentNode.right is not None:
-                queue.append(currentNode.right)
-
+                itemsSum, itemsCounter = data[level]
+                data[level] = (itemsSum + node.value, itemsCounter + 1)
+            
+            if node.left is not None:
+                queue.append(node.left)
+            if node.right is not None:
+                queue.append(node.right)
         level += 1
-    
+
 def avgPerLevel(data):
     result = []
     for level in data:
-        sumVal, count = data[level]
-        avg = sumVal // count
-        result.append(avg)
+        rowSum, items = data[level]
+        avgItem = rowSum // items
+        result.append(avgItem)
     return result
 
-# o(n) time | o(n) space
+n4 = Node(4)
+n7 = Node(7)
+n9 = Node(9)
+n10 = Node(10)
+n2 = Node(2)
+n6 = Node(6)
+n6_2 = Node(6)
+n2_2 = Node(2)
 
-# Data for test
-n1 = Node(4)
-n1.left = Node(7)
+n4.left, n4.right = n7, n9
+n7.left, n7.right = n10, n2
+n2.right = n6
+n6.left = n2_2
+n9.right = n6_2
 
-n2l = n1.left 
-n2l.left  = Node(10)
-n2l.right = Node(2)
-
-n3r = n2l.right
-n3r.right = Node(6)
-
-n4l = n3r.right
-n4l.left = Node(2)
-
-n1.right = Node(9)
-n2r = n1.right 
-n2r.right = Node(6)
-
-# Test
-dataPerRow = {}
-collectDataPerLevel(n1, dataPerRow)
-print("DataPerRow: ", dataPerRow)
-response = avgPerLevel(dataPerRow)
-print(response)
+d = {}
+collectDataInBFS(n4, d)
+print(d)
+print(avgPerLevel(d))
