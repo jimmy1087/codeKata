@@ -3,22 +3,30 @@
 Given a binary tree, get the averare value at each level of the tree
 
 Input:
-    
-    4
-   / \
-  7   9
- / \   \
-10  2   6
-     \
-      6
-     /
-    2
+        4        lv = 0   data[0] = [4]
+       / \
+      7   9      lv = 1   data[1] = [7]
+     / \   \
+    10  2   6    lv = 2   data[2] = [10]  .. data[10,2]
+         \
+          6      lv = 3   data[3] = [6]
+         /
+        2        lv = 4   data[4] = [2]
     
 Output:
 
 [4, 8, 6, 6, 2]
 
-data = {0: [4], 1: [7, 9], 2: [10, 2, 6], 3: [6], 4: [2]}
+Node(4)  lv: 0 data = { 0: [4]}
+Node(7)  lv: 1 data = { 0: [4], 1: [7]}
+Node(10) lv: 2 data = { 0: [4], 1: [7], 2: [10]}
+up.r
+Node(2)  lv: 2 data = { 0: [4], 1: [7], 2: [10, 2]}
+Node(6)  lv: 3 data = { 0: [4], 1: [7], 2: [10, 2], 3: [6]}
+Node(2)  lv: 4 data = { 0: [4], 1: [7], 2: [10, 2], 3: [6], 4:[2]}
+up.r
+Node(9)  lv: 1 data = { 0: [4], 1: [7,9], 2: [10, 2], 3: [6], 4:[2]}
+Node(6)  lv: 2 data = { 0: [4], 1: [7,9], 2: [10, 2, 6], 3: [6], 4:[2]}
 
 '''
 
@@ -28,6 +36,7 @@ class Node:
         self.left = None
         self.right = None
 
+# o(n) time | o(n) space
 def collectDataPerLevel(node, data, level = 0):
     if node is None:
         return
@@ -47,8 +56,6 @@ def avgPerLevel(data):
         avg = sum(nums) // len(nums)
         result.append(avg)
     return result
-
-# o(n) time | o(n) space
 
 # Data for test
 n1 = Node(4)
