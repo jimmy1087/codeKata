@@ -18,9 +18,18 @@ Output:
 
 [4, 8, 6, 6, 2]
 
-data = {0: (4, 1), 1: (16, 2), 2: (18, 3), 3: (6, 1), 4: (2, 1)}
+    lv: 0  data: { 0: (4, 1) }
+v.l lv: 1  data: { 0: (4, 1), 1: (7, 1) }
+v.l lv: 2  data: { 0: (4, 1), 1: (7, 1), 2: (10, 1) }
+^
+v.r lv: 2  data: { 0: (4, 1), 1: (7, 1), 2: (12, 2) }
+v.r lv: 3  data: { 0: (4, 1), 1: (7, 1), 2: (12, 2), 3: (6, 1) }
+v.l lv: 4  data: { 0: (4, 1), 1: (7, 1), 2: (12, 2), 3: (6, 1), 4: (2, 1) }
+^ * 4
+v.r lv: 1  data: { 0: (4, 1), 1: (16, 2), 2: (12, 2), 3: (6, 1), 4: (2, 1) }
+v.r lv: 2  data: { 0: (4, 1), 1: (16, 2), 2: (18, 3), 3: (6, 1), 4: (2, 1) }
+^ * 2
 
-result = [4, 8, 6, 6, 2]
 '''
 
 class Node:
@@ -33,24 +42,22 @@ def collectDataPerLevel(node, data, level = 0):
     if node is None:
         return
     
-    if level not in data:
-        data[level] = (node.value, 1)
+    if level in data:
+        sumItems, cntItems = data[level]
+        data[level] = (sumItems + node.value, cntItems + 1)
     else:
-        sumVal, count = data[level]
-        sumVal += node.value
-        count  += 1
-        data[level] = (sumVal, count)
+        data[level] = (node.value, 1)
     
     collectDataPerLevel(node.left, data, level + 1)
     collectDataPerLevel(node.right, data, level + 1)
     
 def avgPerLevel(data):
-    result = []
-    for level in data:
-        sumVal, count = data[level]
-        avg = sumVal // count
-        result.append(avg)
-    return result
+    r = []
+    for lv in data:
+        sumItems, cntItems = data[lv]
+        avg = sumItems // cntItems
+        r.append(avg)
+    return r
 
 # o(n) time | o(n) space
 
