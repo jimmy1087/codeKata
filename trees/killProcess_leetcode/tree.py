@@ -6,20 +6,20 @@ class Node:
 # o(n) Time | o(n) Space
 def killProcess(pid, ppid, kill):
 
-    # o(n) Time | o(n) Space
+    # o(n) Time | o(n) Space        1. Create Map of nodes
     m = {}
     for p in pid:
         m[p] = Node(p)
 
-    # o(n) Time
+    # o(n) Time                     2. Build tree (relationships of Nodes)
     for i, p in enumerate(ppid):
         if p == 0:
             continue
         pp = m[p]
         pp.children.append( m[ pid[i] ] )
 
-    toKill = []
-    dfs(m, kill, toKill)
+    toKill = []             
+    dfs(m, kill, toKill)          # 3. DFS
 
     return toKill
 
