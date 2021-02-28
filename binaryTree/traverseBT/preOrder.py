@@ -34,3 +34,26 @@ n9.left, n9.right = n7, n12
 n7.right = n8
 
 print(preOrderTraverse(n10, []))
+
+
+'''
+         A
+       /   \
+      B     C
+     / \   / \
+    D   E F   G
+'''
+
+a = Node('A')
+b = Node('B')
+c = Node('C')
+d = Node('D')
+e = Node('E')
+f = Node('F')
+g = Node('G')
+
+a.left, a.right = b, c
+b.left, b.right = d, e
+c.left, c.right = f, g
+
+print(preOrderTraverse(a, []))
