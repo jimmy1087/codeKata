@@ -34,10 +34,8 @@ def collectData(node, data, colIdx = 0):
     else:
         data[colIdx].append(node.value)
 
-    if node.left is not None:
-        collectData(node.left, data, colIdx - 1)
-    if node.right is not None:
-        collectData(node.right, data, colIdx + 1)
+    collectData(node.left, data, colIdx - 1)
+    collectData(node.right, data, colIdx + 1)
 
 def printVertical(data):
     r = []
