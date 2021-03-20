@@ -58,7 +58,7 @@ class Node:
 def collectData(node, data, lvl = 0):
     queue = [(node, 1, lvl)]
     while queue:
-        n, items, lvl = queue.pop(0)
+        n, items, lvl = queue.pop(0)   # Carefull with this index. If it is pop() is a stack! thus a DFS traverse:  4 -> 9 -> 6 -> 7 -> 2 -> 8 -> 1 -> 10 
 
         if lvl not in data:
             data[lvl] = (n.value, 1, lvl)
@@ -79,18 +79,6 @@ def avgValues(data):
         sumItems, numItems, lvl = data[lvl]
         r.append(sumItems//numItems)
     return r
-
-'''
-    4
-   / \
-  7   9
- / \   \
-10  2   6
-     \
-      8
-     /
-    1
-'''
 
 # Data for test
 n1, n2, n7, n9, n10, n6, n8, n4 = Node(1), Node(2), Node(7), Node(9), Node(10), Node(6), Node(8), Node(4)
