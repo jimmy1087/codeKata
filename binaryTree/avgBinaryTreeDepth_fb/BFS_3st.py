@@ -1,6 +1,6 @@
 '''
 
-Given a binary tree, get the averare value at each level of the tree
+Given a binary tree, get the average value at each level of the tree
 
 Input:
     
