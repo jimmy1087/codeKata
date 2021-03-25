@@ -1,5 +1,5 @@
 '''
-o(n^2) 5 * 5 = 25 steps to sorte an array of 5 elements that were in desc order.
+o(n^2) 5 * 5 = 25 steps to sort an array of 5 elements that were in desc order.
 '''
 
 def bubbleSort(array):
