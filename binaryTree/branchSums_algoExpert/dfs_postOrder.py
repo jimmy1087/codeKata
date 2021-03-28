@@ -21,6 +21,18 @@ def branchSumsHelper(node, a, curSum):
     if node.left is None and node.right is None:
         a.append(curSum)
 
+'''
+         1
+       /   \
+      2     3
+     / \   / \
+    4   5 6   7
+   /\  /
+  8  9 10 
+
+Output: [15, 16, 18, 10, 11]
+'''
+
 n1, n2, n3, n4, n5, n6, n7, n8, n9, n10 = N(1), N(2), N(3), N(4), N(5), N(6), N(7), N(8), N(9), N(10)
 n1.left, n1.right = n2, n3
 n2.left, n2.right = n4, n5
