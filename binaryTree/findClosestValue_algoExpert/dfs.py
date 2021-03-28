@@ -48,7 +48,7 @@ Target: 12
        / \    / \
       2   5  13  22     [13] close: abs(12-13) = 1  or abs(12-10)  = 2      ... closeNode: 13
      /         \      
-    1           14      [14] close: abs(12-14) = 2  or abs(12-13)  = 1      ... closeNode: 13
+    1           14      [14] close: abs(12-14) = 2  or abs(12-13)  = 1      ... closeNode: 13 // Actually, this will not evaluate, cause the left node of 13 is None.
 
 Return: 13
 '''
