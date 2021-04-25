@@ -1,30 +1,42 @@
-# This is an input class. Do not edit.
+# O(n) time || O(n) space
 class BST:
     def __init__(self, value, left=None, right=None):
         self.value = value
         self.left = left
         self.right = right
 
+class TreeInfo:
+    def __init__(self, rootIdx):
+        self.rootIdx = rootIdx
+
 def reconstructBst(preOrderTraversalValues):
-	root = reconstructBstHelper(preOrderTraversalValues, 0, float('-inf'), float('inf'))
-	
-def reconstructBstHelper(a, i, minRef, maxRef):
-    
-    if len(a) == i+1:
-        return BST(a[i+1])
+    treeInfo = TreeInfo(0)
+    return reconstructBstHelper(preOrderTraversalValues, treeInfo, float('-inf'), float('inf'))
 
-    node = BST(a[i])
-    nextNode = BST(a[i+1])
+def reconstructBstHelper(a, treeInfo, lowerBoundary, upperBoundary):
     
-    print('i: ', i, ' node: ', node.value, ' nextN: ', nextNode.value, ' min', minRef, 'max', maxRef)
+    if treeInfo.rootIdx == len(a):
+        return None
+    
+    currentValue = a[treeInfo.rootIdx]
+    if currentValue < lowerBoundary or currentValue >= upperBoundary:
+        return None
+    
+    treeInfo.rootIdx += 1
+    leftSubTree = reconstructBstHelper(a, treeInfo, lowerBoundary, currentValue)
+    rightSubTree = reconstructBstHelper(a, treeInfo, currentValue, upperBoundary)
 
-    if nextNode.value < node.value and a[i+1] > minRef:
-        node.left = reconstructBstHelper(a, i+1, minRef, node.value)
-    
-    print('22222:  i: ', i, ' node: ', node.value, ' nextN: ', nextNode.value, ' min', minRef, 'max', maxRef)
-    
-    if nextNode.value > node.value and a[i+1] < maxRef:
-        node.right = reconstructBstHelper(a, i+1, node.value, maxRef)
+    return BST(currentValue, leftSubTree, rightSubTree)
+
+#--------------------------------
+
+def printBTSinPreOrder(node):
+    if node is None:
+        return
+    print(node.value)
+    printBTSinPreOrder(node.left)
+    printBTSinPreOrder(node.right)
 
 a = [10, 4, 2, 1, 5, 17, 19, 18]
-reconstructBst(a)
+r = reconstructBst(a)
+printBTSinPreOrder(r)
