@@ -9,12 +9,13 @@ def cycleInGrahp(edges):
 
         isCycle = isNodeInCycle(node, edges, visited, inStack)
         if isCycle:
-            print(inStack)
+            print('Cycle found traversing node:', node, 'Visited:', inStack)
             return True
         
     return False
 
 def isNodeInCycle(node, edges, visited, inStack):
+    print('Visiting Node:', node, 'Visited:', visited)
     visited[node] = True
     inStack[node] = True
 
@@ -30,6 +31,7 @@ def isNodeInCycle(node, edges, visited, inStack):
 
     inStack[node] = False
     return False
+
 
 edges = [[8], [0, 2], [0, 3], [0, 4], [0, 5], [0], [7], [8], [6]]
 cycleInGrahp(edges)
