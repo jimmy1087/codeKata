@@ -9,11 +9,9 @@ class Trie(object):
     def insert(self, word):
         currentNode = self.root
         for c in word:
-            if c in currentNode.children:
-                currentNode = currentNode.children[c]
-            else:
+            if c not in currentNode.children:
                 currentNode.children[c] = TrieNode()
-                currentNode = currentNode.children[c]
+            currentNode = currentNode.children[c]
         currentNode.children['*'] = None
     
     '''
